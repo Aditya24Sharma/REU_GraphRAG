@@ -1,0 +1,13 @@
+#files to ignore
+vectordb/
+papers/
+markdowns/
+ontology_outputs/
+ontology_outputs_json/
+
+
+#.env
+.env
+
+#__pycache__
+__pycache__/

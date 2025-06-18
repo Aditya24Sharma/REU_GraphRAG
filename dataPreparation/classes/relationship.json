@@ -1,0 +1,227 @@
+{
+  "v1": {
+    "causal_relationships": [
+      {
+        "relation_type": "causes",
+        "description": "Direct causal relationship between phenomena",
+        "examples": ["climate-change causes increased-precipitation", "urbanization causes surface-runoff-increase"]
+      },
+      {
+        "relation_type": "influences",
+        "description": "Indirect influence or correlation",
+        "examples": ["vegetation-cover influences evapotranspiration", "soil-type influences infiltration-rate"]
+      },
+      {
+        "relation_type": "controls",
+        "description": "Strong controlling factor",
+        "examples": ["topography controls flow-direction", "precipitation controls streamflow-generation"]
+      }
+    ],
+    "methodological_relationships": [
+      {
+        "relation_type": "validates",
+        "description": "One method validates another",
+        "examples": ["field-measurements validates model-outputs", "satellite-data validates gauge-observations"]
+      },
+      {
+        "relation_type": "calibrates",
+        "description": "Uses data to calibrate model/method",
+        "examples": ["streamflow-data calibrates hydrological-model", "observed-data calibrates parameters"]
+      },
+      {
+        "relation_type": "compares_with",
+        "description": "Comparative analysis between methods",
+        "examples": ["statistical-model compares_with physical-model", "remote-sensing compares_with ground-truth"]
+      },
+      {
+        "relation_type": "improves",
+        "description": "Enhancement or improvement relationship",
+        "examples": ["machine-learning improves prediction-accuracy", "data-assimilation improves model-performance"]
+      }
+    ],
+    "data_relationships": [
+      {
+        "relation_type": "derives_from",
+        "description": "Data derivation relationship",
+        "examples": ["evapotranspiration derives_from meteorological-data", "baseflow derives_from streamflow-data"]
+      },
+      {
+        "relation_type": "aggregates_to",
+        "description": "Spatial or temporal aggregation",
+        "examples": ["daily-data aggregates_to monthly-data", "point-measurements aggregates_to basin-average"]
+      },
+      {
+        "relation_type": "correlates_with",
+        "description": "Statistical correlation",
+        "examples": ["precipitation correlates_with streamflow", "temperature correlates_with evaporation"]
+      }
+    ],
+    "scale_relationships": [
+      {
+        "relation_type": "scales_up_to",
+        "description": "Upscaling relationship",
+        "examples": ["plot-scale scales_up_to catchment-scale", "hourly-data scales_up_to daily-data"]
+      },
+      {
+        "relation_type": "scales_down_to",
+        "description": "Downscaling relationship",
+        "examples": ["regional-climate scales_down_to local-weather", "basin-model scales_down_to sub-basin"]
+      }
+    ],
+    "process_relationships": [
+      {
+        "relation_type": "precedes",
+        "description": "Sequential process relationship",
+        "examples": ["precipitation precedes surface-runoff", "infiltration precedes groundwater-recharge"]
+      },
+      {
+        "relation_type": "interacts_with",
+        "description": "Process interaction",
+        "examples": ["surface-water interacts_with groundwater", "evapotranspiration interacts_with soil-moisture"]
+      },
+      {
+        "relation_type": "competes_with",
+        "description": "Competing processes",
+        "examples": ["evaporation competes_with transpiration", "infiltration competes_with surface-runoff"]
+      }
+    ],
+    "spatial_relationships": [
+      {
+        "relation_type": "upstream_of",
+        "description": "Upstream spatial relationship",
+        "examples": ["headwater upstream_of outlet", "tributary upstream_of main-stem"]
+      },
+      {
+        "relation_type": "downstream_of",
+        "description": "Downstream spatial relationship",
+        "examples": ["outlet downstream_of headwater", "estuary downstream_of river"]
+      },
+      {
+        "relation_type": "adjacent_to",
+        "description": "Spatial adjacency",
+        "examples": ["riparian-zone adjacent_to stream", "floodplain adjacent_to river"]
+      },
+      {
+        "relation_type": "within",
+        "description": "Spatial containment",
+        "examples": ["sub-basin within watershed", "stream within catchment"]
+      }
+    ],
+    "temporal_relationships": [
+      {
+        "relation_type": "follows",
+        "description": "Temporal sequence",
+        "examples": ["wet-season follows dry-season", "snowmelt follows snow-accumulation"]
+      },
+      {
+        "relation_type": "concurrent_with",
+        "description": "Simultaneous occurrence",
+        "examples": ["peak-flow concurrent_with peak-precipitation", "drought concurrent_with low-streamflow"]
+      },
+      {
+        "relation_type": "lags_behind",
+        "description": "Time lag relationship",
+        "examples": ["streamflow lags_behind precipitation", "groundwater-response lags_behind recharge"]
+      }
+    ],
+    "impact_relationships": [
+      {
+        "relation_type": "affects",
+        "description": "General impact relationship",
+        "examples": ["land-use-change affects hydrology", "climate-variability affects water-resources"]
+      },
+      {
+        "relation_type": "threatens",
+        "description": "Negative impact or threat",
+        "examples": ["flooding threatens infrastructure", "drought threatens water-supply"]
+      },
+      {
+        "relation_type": "benefits",
+        "description": "Positive impact",
+        "examples": ["wetlands benefits water-quality", "conservation benefits streamflow"]
+      }
+    ]
+  },
+  "v2":{
+    "Causal": [
+      "causes",
+      "influences", 
+      "controls",
+      "drives",
+      "triggers",
+      "modulates"
+    ],
+    "Process": [
+      "precedes",
+      "follows",
+      "interacts_with",
+      "competes_with",
+      "enhances",
+      "inhibits",
+      "transforms_to"
+    ],
+    "Methodological": [
+      "validates",
+      "calibrates",
+      "compares_with",
+      "improves_upon",
+      "extends",
+      "implements",
+      "applies"
+    ],
+    "Data": [
+      "derives_from",
+      "aggregates_to",
+      "correlates_with",
+      "supports",
+      "contradicts",
+      "complements"
+    ],
+    "Spatial": [
+      "upstream_of",
+      "downstream_of",
+      "adjacent_to",
+      "within",
+      "encompasses",
+      "overlaps_with",
+      "connects_to"
+    ],
+    "Temporal": [
+      "concurrent_with",
+      "lags_behind",
+      "leads",
+      "periodic_with",
+      "seasonal_with"
+    ],
+    "Scale": [
+      "scales_up_to",
+      "scales_down_to",
+      "represents",
+      "aggregates_from",
+      "generalizes_to"
+    ],
+    "Impact": [
+      "affects",
+      "threatens",
+      "benefits",
+      "degrades",
+      "enhances",
+      "mitigates"
+    ],
+    "Evaluation": [
+      "performs_better_than",
+      "performs_worse_than",
+      "equivalent_to",
+      "outperforms",
+      "underperforms"
+    ],
+    "Conceptual": [
+      "based_on",
+      "builds_upon",
+      "challenges",
+      "supports_theory",
+      "refutes",
+      "confirms"
+    ]
+  }
+}

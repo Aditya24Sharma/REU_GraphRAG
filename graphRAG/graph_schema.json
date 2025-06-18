@@ -1,0 +1,129 @@
+{
+    "node_labels":[
+    "Validation_Assessment_validation_approach",
+    "Validation_Assessment_performance_evaluation",
+    "Validation_Assessment_accuracy_assessment",
+    "Validation_Assessment_uncertainty_analysis",
+    "Validation_Assessment_cross_validation",
+    "Validation_Assessment_robustness_testing",
+
+    "Uncertainty_Limitations_uncertainty_sources",
+    "Uncertainty_Limitations_methodological_limitations",
+    "Uncertainty_Limitations_data_limitations",
+    "Uncertainty_Limitations_assumption_limitations",
+    "Uncertainty_Limitations_scale_limitations",
+    "Uncertainty_Limitations_uncertainty_quantification",
+    "Uncertainty_Limitations_error_analysis",
+
+    "Applications_Management_practical_applications",
+    "Applications_Management_management_implications",
+    "Applications_Management_policy_recommendations",
+    "Applications_Management_operational_relevance",
+
+    "Future_Research_research_directions",
+    "Future_Research_methodological_improvements",
+    "Future_Research_data_needs",
+    "Future_Research_collaboration_opportunities",
+    "Future_Research_model_developments",
+    "Future_Research_technological_integration",
+    "Future_Research_interdisciplinary_collaboration",
+
+    "Conclusions_key_findings",
+    "Conclusions_main_contributions",
+    "Conclusions_research_summary",
+    "Conclusions_final_recommendations",
+
+    "Innovation_Novelty_novel_contributions",
+    "Innovation_Novelty_methodological_advances",
+    "Innovation_Novelty_breakthrough_insights",
+    "Innovation_Novelty_new_application",
+    "Innovation_Novelty_paradigm_contributions",
+
+    "Metadata_paper_title",
+    "Metadata_authors",
+    "Metadata_journal_name",
+    "Metadata_publication_year",
+    "Metadata_doi",
+    "Metadata_keywords",
+    "Metadata_abstract",
+    "Metadata_funding_source",
+
+    "Research_Background_historical_context",
+    "Research_Background_theoretical_foundation",
+    "Research_Background_field_evolution",
+    "Research_Background_current_state",
+
+    "Literature_Review_existing_research",
+    "Literature_Review_previous_studies",
+    "Literature_Review_knowledge_gaps",
+    "Literature_Review_research_trends",
+    "Literature_Review_comparative_analysis",
+
+    "Problem_Statement_research_gap",
+    "Problem_Statement_practical_challenges",
+    "Problem_Statement_knowledge_deficit",
+    "Problem_Statement_methodological_limitations",
+
+    "Research_Objective_primary_goals",
+    "Research_Objective_research_questions",
+    "Research_Objective_hypotheses",
+    "Research_Objective_specific_aims",
+
+    "Discussion_Interpretation_result_interpretation",
+    "Discussion_Interpretation_process_understanding",
+    "Discussion_Interpretation_mechanishm_explanation",
+    "Discussion_Interpretation_theoretical_implications",
+    "Discussion_Interpretation_practical_implications",
+    "Discussion_Interpretation_comparative_discussion",
+    "Discussion_Interpretation_borader_context",
+
+    "Study_Area_geographic_description",
+    "Study_Area_physical_characteristics",
+    "Study_Area_climate_description",
+    "Study_Area_land_use_description",
+
+    "Hydrological_Process_process_description",
+
+    "Research_Methodology_experimental_design",
+    "Research_Methodology_data_collection_methods",
+    "Research_Methodology_analysis_approach",
+    "Research_Methodology_quality_assurance",
+
+    "Data_Sources_data_description",
+    "Data_Sources_temporal_coverage",
+    "Data_Sources_spatial_coverage",
+    "Data_Sources_data_quality_issues",
+
+    "Spatial_Temporal_Scale_spatial_scale_description",
+    "Spatial_Temporal_Scale_temporal_scale_description",
+    "Spatial_Temporal_Scale_scale_interactions",
+
+    "Models_Methods_model_description",
+    "Models_Methods_method_description",
+    "Models_Methods_parameter_estimation",
+    "Models_Methods_model_setup",
+
+    "Results_Findings_quantitative_results",
+    "Results_Findings_qualitative_findings",
+    "Results_Findings_key_patterns",
+    "Results_Findings_performance_metrics",
+
+    "Analysis_Techniques_statistical_methods",
+    "Analysis_Techniques_analytical_approaches",
+    "Analysis_Techniques_processing_techniques"
+],
+    "relationship_types":[
+    "causes", "influences", "controls", "drives", "triggers", "modulates",
+    "precedes", "follows", "interacts_with", "competes_with", "enhances", "inhibits", "transforms_to",
+    "validates", "calibrates", "compares_with", "improves_upon", "extends", "implements", "applies",
+    "derives_from", "aggregates_to", "correlates_with", "supports", "contradicts", "complements",
+    "upstream_of", "downstream_of", "adjacent_to", "within", "encompasses", "overlaps_with", "connects_to",
+    "concurrent_with", "lags_behind", "leads", "periodic_with", "seasonal_with",
+    "scales_up_to", "scales_down_to", "represents", "aggregates_from", "generalizes_to",
+    "affects", "threatens", "benefits", "degrades", "enhances", "mitigates",
+    "performs_better_than", "performs_worse_than", "equivalent_to", "outperforms", "underperforms",
+    "based_on", "builds_upon", "challenges", "supports_theory", "refutes", "confirms"
+],
+    "node_properties":["content", "evidence", "keywords", "confidence_score"],
+    "relationship_properties":["type", "description", "confidence_score", "evidence"]
+}
