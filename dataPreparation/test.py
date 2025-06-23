@@ -1,17 +1,24 @@
-import json
 import os
-from pathlib import Path
-
-folder = './ontology_outputs_json/v2/'
-
-for files in os.listdir(folder):
-    prev_name = files
-    new_name = files.replace('-', '_')
-    print('Previous Name: ', prev_name)
-    print('New Name: ', new_name)
-    os.rename((folder+prev_name), (folder+new_name))
-    print('successfull renamed')
+from neo4j import GraphDatabase
+from dotenv import load_dotenv
 
 
+load_dotenv()
 
+print(os.getenv)
 
+neo4j_uri=os.getenv('NEO4J_URI')
+neo4j_username=os.getenv('NEO4J_USERNAME')
+neo4j_password=os.getenv('NEO4J_PASSWORD')
+openai_api_key=os.getenv('OPENAI_API_KEY')
+
+print('Type: ', type(neo4j_username))
+print('Username: ', neo4j_username)
+print('Password: ', neo4j_password )
+driver = GraphDatabase.driver(uri=neo4j_uri, auth=(neo4j_username, neo4j_password))
+
+cypher = 'MATCH (n:Research_Methodology_experimental_design)-[r]->(neighbor) RETURN n,r,neighbor LIMIT 5;'
+
+with driver.session() as session:
+    response = session.run(cypher)
+    print(response)

@@ -2,7 +2,8 @@ import os
 import chromadb
 from dotenv import load_dotenv
 from langchain_openai import OpenAIEmbeddings
-from typing import List, TypedDict
+from typing import List
+from pydantic import BaseModel
 
 load_dotenv()
 
@@ -15,7 +16,7 @@ chroma_client = chromadb.PersistentClient(path='vectordb')
 embedding_model = OpenAIEmbeddings(model= "text-embedding-ada-002")
 
 
-class ChunkDict(TypedDict):
+class ChunkDict(BaseModel):
     chunk : str
     source: str
     chunk_id: str
@@ -68,7 +69,7 @@ def retrieve_similar_chunks(query:str, collection_name:str, top_k:int = 5)->List
         if collection:
             print(f'Found collection for {collection_name}')
         query_embedding = embedding_model.embed_query(query)
-        results:QueryObject = collection.query(
+        results = collection.query(
             query_embeddings=[query_embedding],
             n_results = top_k
         )
@@ -112,3 +113,17 @@ def deleteCollection(collection_name:str)->None:
         print(f"Collection {collection_name} successfully deleted")
     except Exception as e:
         print(f'Failed to delete collection {collection_name}: {e}')
+
+def listCollection()-> List:
+    """
+    List all the collections avaiable in chromadb
+    """
+    collections = chroma_client.list_collections()
+    return collections
+
+
+if __name__ == '__main__':
+    for collections in listCollection():
+        print(collections.name)
+        deleteCollection(collection_name=collections.name)
+    
