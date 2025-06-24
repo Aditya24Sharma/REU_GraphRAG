@@ -1,6 +1,8 @@
 import os
 from openai import OpenAI
 from dotenv import load_dotenv
+from typing import List
+import re
 
 load_dotenv()
 
@@ -42,7 +44,7 @@ def generate_response(context: list[str], query: str, model:str='gpt-4o-mini')->
         print(f'Error generating response from LLM: {e}')
         return ""
 
-def get_relevant_ext_ids(context:list[str], query:str, model:str='gpt-4o-mini')->str:
+def get_relevant_ext_ids(context:list[str], query:str, model:str='gpt-4o-mini')->List[str]:
     """
     From the given context and query filter only the context that will be highly relevant to the given query.
     
@@ -52,7 +54,7 @@ def get_relevant_ext_ids(context:list[str], query:str, model:str='gpt-4o-mini')-
         model(str): LLM model to query to 
 
     Returns:
-        str: String containing list of extraction_ids that are relevant to the given query
+        list[str]: List of strings containing list of extraction_ids that are relevant to the given query
     """
     try:
         print('Extracting relevant extraction ids')
@@ -78,6 +80,8 @@ def get_relevant_ext_ids(context:list[str], query:str, model:str='gpt-4o-mini')-
                 ]
                 )
         answer = response.choices[0].message.content or ""
-        return answer
+        print('Got answer from LLM: ', answer)
+        formatted = re.findall(r'\bEXT_\d+\b',answer)
+        return formatted
     except Exception as e:
         print(f'Error extracting relevant ids from the LLM: {e}')

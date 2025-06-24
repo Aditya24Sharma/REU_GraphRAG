@@ -3,9 +3,12 @@ import json
 import os
 from dataPreparation import text_chunking
 from typing import List
-from graphRAG.main import CypherGenerator
+from graphRAG.main import GraphRetriever
 import openai
+from dotenv import load_dotenv
+import re
 
+load_dotenv()
 
 collection_name = 'mandil_entitites_db'
 
@@ -70,9 +73,13 @@ if __name__ =='__main__':
     #     total_chunks.append(chunk)
 
     # collection_name = 'P001_md'
-    # store_chunks(chunks=total_chunks, collection_name=collection_name)
-    openai.apikey = os.getenv('')
-    cypher = CypherGenerator()
+    # store_chunks(chunks=total_chunks, collection_name=collection_name) 
+    neo4j_uri=os.getenv('NEO4J_URI')
+    neo4j_username=os.getenv('NEO4J_USERNAME')
+    neo4j_password=os.getenv('NEO4J_PASSWORD')
+    openai_api_key=os.getenv('OPENAI_API_KEY')
+    # print(type(neo4j_username))
+    graph = GraphRetriever(neo4j_uri=neo4j_uri, username=neo4j_username, password=neo4j_password)
     while True:
         print('Type q to quit or type your query')
         query = input('Enter your query: ')
@@ -84,9 +91,16 @@ if __name__ =='__main__':
         #creating texts to be chunked
         similar_chunks = retrieve_similar_chunks(query=query, collection_name=collection_name, top_k=8)
         # print('Similar chunks for the given query: ', similar_chunks),
-        answer = get_relevant_ext_ids(context=similar_chunks, query=query)
-        print(type(answer))
-        print('Extracted Ids:', answer)
+        context = similar_chunks
+        if collection_name == 'P001':
+            answer = get_relevant_ext_ids(context=similar_chunks, query=query)
+            print('Got answer: ', answer)
+            
+            if answer:
+                context = graph.get_neighbors(nodes=answer)
 
+        print(generate_response(context=context, query=query))
 
         
+
+

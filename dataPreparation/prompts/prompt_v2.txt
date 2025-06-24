@@ -168,6 +168,7 @@ Capture water quality, quantity, and flow-related information
 4. RELATIONSHIP IDENTIFICATION:
 
 Look for causal relationships between variables and processes
+Do not assign different relationships between same two extracted entities
 Identify methodological connections (validation, calibration, comparison)
 Note spatial and temporal relationships
 Capture process interactions and dependencies

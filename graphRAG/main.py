@@ -4,6 +4,7 @@ from neo4j import GraphDatabase
 import openai
 from langchain.schema import Document
 from langchain_community.embeddings import OpenAIEmbeddings
+from langchain_community.vectorstores import FAISS
 import json
 import os
 from dotenv import load_dotenv
@@ -109,8 +110,7 @@ class QueryAnalyzer:
                     "max_hops": (string number from 1 to 3),
                     "include_limitations": (string true or false)
                 }},
-                "complexity": "simple|moderate|complex",
-                }}
+                "complexity": "simple|moderate|complex",                }}
 
                 QUERY TO ANALYZE: 
                 """
@@ -268,29 +268,89 @@ class CypherGenerator:
         )
         print(response.choices[0].message.content) 
         return 
-    
-    def get_neighbors(self, nodes:List[str])->None:
-        """
-        From a list of node Ids provided, all the nodes and their neighbors
-
-        Args:
-            nodes(List[str]): List of nodes id to extract the neighboring nodes from 
-
-        Return:
-            None
-        """
-        for node in nodes:
-            cypher = f"MATCH (node)-[relationship]-(neighbor) WHERE node.id = {node} RETURN relationship, neighbor"
-            print(f'Cypher: {cypher}'
-
-        return 
 
 class GraphRetriever:
     """Node 3: Executes Cypher queries and retrieves graph data"""
     
     def __init__(self, neo4j_uri: str, username: str, password: str):
         self.driver = GraphDatabase.driver(neo4j_uri, auth=(username, password))
-    
+
+    def get_neighbors(self, nodes:List[str]):
+        """
+        Given nodes return all of this neighbors with their relationships
+        Args:
+            nodes(List[str]): EXT_id of the nodes to extract the neighbors an relationships of
+
+        Returns:
+            List[(str, str)]: List of all the neighbors and relationships 
+        """
+        final_output = []
+        with self.driver.session() as session:
+            for node in nodes:
+                output = {'Record':[]}
+                cypher_self = f"MATCH (node) WHERE node.id='{node}' RETURN node"
+                result = session.run(cypher_self)
+                # print('For Node the number of results is ',len(result))
+                for record in result:
+                    
+                    content = record['node']._properties['content']
+                    evidence = record['node']._properties['evidence']
+                    output['Node'] = {
+                        'content':content,
+                        'evidence':evidence
+                    } 
+
+                cypher_other = f"MATCH (node)-[relationship]-(neighbor) WHERE node.id ='{node}' RETURN relationship, neighbor"
+                # print('Running Cypher: ', cypher_other)
+                result = session.run(cypher_other)
+                
+                for record in result:
+                    rec = {}
+                    relationship = record['relationship']
+                    neighbour = record['neighbor']
+                    if relationship:
+                        if relationship.type == 'belongs_to':
+                            pass
+                        else:
+                            # print('Relationship')
+                            rel_type = relationship._properties['type']
+                            rel_evd = relationship._properties['evidence']
+                            rel_des = relationship._properties['description']
+                            rec['Relationship'] = {
+                                'Type' : rel_type,
+                                'Evidence': rel_evd,
+                                'Description': rel_des
+                            }
+
+                    if neighbour:
+                        if relationship.type == 'belongs_to':
+                            if 'Paper' not in output.keys():
+                                paper = {}
+                                paper_theme = neighbour._properties['main_theme']
+                                paper_key_contr = neighbour._properties["key_contributions"]
+                                paper_prim_meth = neighbour._properties['primary_methods']
+                                output['Paper'] = {
+                                    'main_theme': paper_theme,
+                                    'Key_contributions': paper_key_contr,
+                                    'paper_prim_meth': paper_prim_meth
+                                }
+                            pass
+                        else:
+                            nei_evd = neighbour._properties['evidence']
+                            nei_cont = neighbour._properties['content']
+                            rec['Neighbour'] = {
+                                'Evidence': nei_evd,
+                                'Content': nei_cont
+                            }
+                    
+                    output['Record'].append(rec)
+                    # print('-'*50)
+                final_output.append(output)
+
+            # print(final_output)
+        return final_output
+
+
     def execute_queries(self, cypher_queries: List[Dict]) -> GraphContext:
         """Execute multiple queries and merge results"""
         
