@@ -4,7 +4,6 @@ from neo4j import GraphDatabase
 import openai
 from langchain.schema import Document
 from langchain_community.embeddings import OpenAIEmbeddings
-from langchain_community.vectorstores import FAISS
 import json
 import os
 from dotenv import load_dotenv
@@ -268,6 +267,22 @@ class CypherGenerator:
             temperature=0.2
         )
         print(response.choices[0].message.content) 
+        return 
+    
+    def get_neighbors(self, nodes:List[str])->None:
+        """
+        From a list of node Ids provided, all the nodes and their neighbors
+
+        Args:
+            nodes(List[str]): List of nodes id to extract the neighboring nodes from 
+
+        Return:
+            None
+        """
+        for node in nodes:
+            cypher = f"MATCH (node)-[relationship]-(neighbor) WHERE node.id = {node} RETURN relationship, neighbor"
+            print(f'Cypher: {cypher}'
+
         return 
 
 class GraphRetriever:

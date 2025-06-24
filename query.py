@@ -1,9 +1,11 @@
-from vectorRAG import generate_response, retrieve_similar_chunks
+from vectorRAG import generate_response, retrieve_similar_chunks, listCollection, get_relevant_ext_ids
 import json
 import os
 from dataPreparation import text_chunking
 from typing import List
-from vectorRAG import store_chunks, listCollection
+from graphRAG.main import CypherGenerator
+import openai
+
 
 collection_name = 'mandil_entitites_db'
 
@@ -69,16 +71,22 @@ if __name__ =='__main__':
 
     # collection_name = 'P001_md'
     # store_chunks(chunks=total_chunks, collection_name=collection_name)
-
+    openai.apikey = os.getenv('')
+    cypher = CypherGenerator()
     while True:
         print('Type q to quit or type your query')
         query = input('Enter your query: ')
-        print(f'Available collecitons: {listCollection}')
+        print(f'Available collecitons: {[c.name for c in listCollection()]}')
         collection_name = input('Enter collection to serach in: ')
         if query == 'q':
             break
         
         #creating texts to be chunked
         similar_chunks = retrieve_similar_chunks(query=query, collection_name=collection_name, top_k=8)
-        answer = generate_response(context=similar_chunks, query=query)
-        print(answer)
+        # print('Similar chunks for the given query: ', similar_chunks),
+        answer = get_relevant_ext_ids(context=similar_chunks, query=query)
+        print(type(answer))
+        print('Extracted Ids:', answer)
+
+
+        
