@@ -1,0 +1,622 @@
+{
+    "v1": {
+    "Research-Background": [
+      "historical-context",
+      "domain-overview",
+      "theoretical-foundation",
+      "background-concepts",
+      "contextual-information",
+      "field-evolution",
+      "paradigm-shifts"
+    ],
+    "Literature-Review": [
+      "existing-research",
+      "previous-studies",
+      "comparative-analysis",
+      "research-trends",
+      "methodological-evolution",
+      "knowledge-synthesis",
+      "research-lineage",
+      "citation-analysis",
+      "gap-identification"
+    ],
+    "Problem-Statement": [
+      "research-gap",
+      "knowledge-deficit",
+      "practical-challenges",
+      "theoretical-inconsistencies",
+      "methodological-limitations",
+      "data-scarcity",
+      "prediction-uncertainty",
+      "scale-mismatch-problems"
+    ],
+    "Research-Objective": [
+      "primary-goals",
+      "secondary-objectives",
+      "research-questions",
+      "hypotheses",
+      "specific-aims",
+      "success-criteria",
+      "deliverables",
+      "research-scope"
+    ],
+    "Research-Significance": [
+      "scientific-contribution",
+      "practical-importance",
+      "societal-impact",
+      "policy-relevance",
+      "economic-implications",
+      "environmental-benefits",
+      "methodological-advancement",
+      "knowledge-advancement"
+    ],
+    "Hydrological-Context": [
+      "watershed-characteristics",
+      "basin-properties",
+      "climate-setting",
+      "land-use-context",
+      "geological-setting",
+      "topographic-features",
+      "soil-properties",
+      "vegetation-cover",
+      "urban-environment",
+      "agricultural-landscape"
+    ],
+    "Hydrological-Process": [
+      "precipitation-processes",
+      "evapotranspiration",
+      "surface-runoff",
+      "groundwater-flow",
+      "streamflow",
+      "infiltration",
+      "soil-moisture-dynamics",
+      "snow-hydrology",
+      "urban-hydrology",
+      "water-quality-processes",
+      "sediment-transport",
+      "flood-processes",
+      "drought-processes",
+      "baseflow-separation"
+    ],
+    "Research-Methodology": [
+      "field-measurement-methods",
+      "laboratory-analysis",
+      "remote-sensing-techniques",
+      "statistical-analysis",
+      "modeling-approach",
+      "experimental-design",
+      "data-collection-protocols",
+      "sampling-strategies",
+      "analytical-techniques",
+      "computational-methods"
+    ],
+    "Data-and-Measurement": [
+      "gauge-data",
+      "satellite-data",
+      "meteorological-data",
+      "water-quality-data",
+      "discharge-measurements",
+      "precipitation-records",
+      "temporal-resolution",
+      "spatial-resolution",
+      "data-quality",
+      "instrumentation",
+      "sensor-networks",
+      "data-availability",
+      "data-preprocessing"
+    ],
+    "Spatial-Temporal-Scale": [
+      "catchment-scale",
+      "regional-scale",
+      "global-scale",
+      "local-scale",
+      "short-term-study",
+      "long-term-study",
+      "seasonal-analysis",
+      "event-based-study",
+      "multi-scale-analysis",
+      "temporal-aggregation",
+      "spatial-aggregation"
+    ],
+    "Environmental-Factors": [
+      "climate-variability",
+      "climate-change",
+      "land-use-change",
+      "urbanization-effects",
+      "vegetation-influence",
+      "topographic-controls",
+      "anthropogenic-impacts",
+      "natural-variability",
+      "extreme-events",
+      "seasonal-variations"
+    ],
+    "Model-and-Theory": [
+      "hydrological-models",
+      "conceptual-frameworks",
+      "physical-based-models",
+      "statistical-models",
+      "machine-learning-approaches",
+      "model-validation",
+      "uncertainty-analysis",
+      "model-calibration",
+      "model-comparison",
+      "theoretical-development",
+      "empirical-relationships"
+    ],
+    "Experimental-Design": [
+      "study-design",
+      "experimental-setup",
+      "control-variables",
+      "treatment-conditions",
+      "randomization",
+      "replication",
+      "experimental-protocols",
+      "field-experiments",
+      "laboratory-experiments",
+      "natural-experiments"
+    ],
+    "Results-Findings": [
+      "primary-results",
+      "secondary-findings",
+      "quantitative-results",
+      "qualitative-observations",
+      "statistical-outcomes",
+      "model-outputs",
+      "performance-metrics",
+      "trend-analysis",
+      "pattern-identification",
+      "anomaly-detection"
+    ],
+    "Data-Analysis": [
+      "statistical-methods",
+      "time-series-analysis",
+      "spatial-analysis",
+      "correlation-analysis",
+      "regression-analysis",
+      "trend-analysis",
+      "frequency-analysis",
+      "extreme-value-analysis",
+      "multivariate-analysis",
+      "uncertainty-quantification"
+    ],
+    "Discussion-Interpretation": [
+      "result-interpretation",
+      "mechanism-explanation",
+      "process-understanding",
+      "theoretical-implications",
+      "practical-implications",
+      "result-synthesis",
+      "knowledge-integration",
+      "conceptual-advancement",
+      "paradigm-implications"
+    ],
+    "Validation-Verification": [
+      "model-validation",
+      "cross-validation",
+      "independent-validation",
+      "performance-assessment",
+      "accuracy-evaluation",
+      "reliability-testing",
+      "sensitivity-analysis",
+      "robustness-testing",
+      "verification-methods"
+    ],
+    "Limitations-Constraints": [
+      "methodological-limitations",
+      "data-limitations",
+      "temporal-constraints",
+      "spatial-constraints",
+      "computational-limitations",
+      "resource-constraints",
+      "assumption-limitations",
+      "scale-limitations",
+      "technological-constraints"
+    ],
+    "Comparison-Benchmarking": [
+      "method-comparison",
+      "model-comparison",
+      "performance-benchmarking",
+      "relative-assessment",
+      "comparative-evaluation",
+      "baseline-comparison",
+      "state-of-art-comparison",
+      "cross-study-comparison"
+    ],
+    "Implications-Applications": [
+      "water-resource-management",
+      "flood-management",
+      "drought-management",
+      "policy-implications",
+      "decision-support",
+      "operational-applications",
+      "engineering-applications",
+      "environmental-management",
+      "climate-adaptation",
+      "sustainable-development"
+    ],
+    "Future-Work": [
+      "research-directions",
+      "methodological-improvements",
+      "data-requirements",
+      "model-enhancements",
+      "technology-advancement",
+      "collaborative-opportunities",
+      "scaling-considerations",
+      "long-term-studies",
+      "interdisciplinary-research",
+      "innovation-potential"
+    ],
+    "Conclusions": [
+      "key-findings",
+      "main-contributions",
+      "research-summary",
+      "objective-achievement",
+      "hypothesis-confirmation",
+      "final-recommendations",
+      "closing-statements",
+      "research-impact"
+    ],
+    "Related-Research": [
+      "follow-up-studies",
+      "connected-research",
+      "research-extensions",
+      "derivative-work",
+      "collaborative-studies",
+      "parallel-research",
+      "supporting-studies",
+      "complementary-research"
+    ],
+    "Technical-Implementation": [
+      "algorithm-design",
+      "software-development",
+      "computational-implementation",
+      "technical-specifications",
+      "system-architecture",
+      "programming-details",
+      "optimization-techniques",
+      "performance-optimization"
+    ],
+    "Quality-Assessment": [
+      "data-quality-control",
+      "result-reliability",
+      "uncertainty-assessment",
+      "error-analysis",
+      "quality-metrics",
+      "validation-criteria",
+      "confidence-intervals",
+      "reliability-measures"
+    ],
+    "Stakeholder-Impact": [
+      "community-impact",
+      "policy-influence",
+      "decision-maker-relevance",
+      "practitioner-utility",
+      "public-benefit",
+      "industry-applications",
+      "regulatory-implications",
+      "social-implications"
+    ],
+    "Innovation-Novelty": [
+      "novel-approaches",
+      "methodological-innovations",
+      "technological-breakthroughs",
+      "conceptual-innovations",
+      "creative-solutions",
+      "paradigm-shifts",
+      "breakthrough-findings",
+      "pioneering-work"
+    ],
+    "Collaboration-Network": [
+      "research-partnerships",
+      "institutional-collaboration",
+      "international-cooperation",
+      "interdisciplinary-teams",
+      "industry-academia-partnerships",
+      "multi-institutional-projects",
+      "research-networks",
+      "collaborative-platforms"
+    ],
+    "Resource-Requirements": [
+      "computational-resources",
+      "financial-requirements",
+      "human-resources",
+      "infrastructure-needs",
+      "equipment-requirements",
+      "data-resources",
+      "time-requirements",
+      "expertise-requirements"
+    ],
+    "Ethical-Considerations": [
+      "environmental-ethics",
+      "research-ethics",
+      "data-privacy",
+      "sustainability-aspects",
+      "environmental-impact",
+      "social-responsibility",
+      "ethical-implications",
+      "responsible-research"
+    ]},
+    "v2":{
+    "Metadata": [
+      "paper-title",
+      "authors",
+      "journal-name",
+      "publication-year",
+      "doi",
+      "keywords",
+      "abstract"
+    ],
+    "Research-Background": [
+      "historical-context",
+      "domain-overview",
+      "theoretical-foundation",
+      "field-evolution",
+      "paradigm-shifts"
+    ],
+    "Literature-Review": [
+      "existing-research",
+      "previous-studies",
+      "research-trends",
+      "knowledge-synthesis",
+      "gap-identification",
+      "citation-analysis"
+    ],
+    "Problem-Statement": [
+      "research-gap",
+      "knowledge-deficit",
+      "practical-challenges",
+      "methodological-limitations",
+      "prediction-uncertainty"
+    ],
+    "Research-Objective": [
+      "primary-goals",
+      "research-questions",
+      "hypotheses",
+      "specific-aims",
+      "success-criteria"
+    ],
+    "Hydrological-Context": [
+      "watershed-characteristics",
+      "climate-setting",
+      "land-use-context",
+      "geological-setting",
+      "soil-properties",
+      "vegetation-cover"
+    ],
+    "Hydrological-Process": [
+      "precipitation-processes",
+      "evapotranspiration",
+      "surface-runoff",
+      "groundwater-flow",
+      "streamflow",
+      "infiltration",
+      "soil-moisture-dynamics",
+      "snow-hydrology",
+      "water-quality-processes",
+      "flood-processes",
+      "drought-processes"
+    ],
+    "Research-Methodology": [
+      "field-measurement-methods",
+      "laboratory-analysis",
+      "remote-sensing-techniques",
+      "statistical-analysis",
+      "modeling-approach",
+      "data-collection-protocols",
+      "sampling-strategies"
+    ],
+    "Data-and-Measurement": [
+      "gauge-data",
+      "satellite-data",
+      "meteorological-data",
+      "water-quality-data",
+      "discharge-measurements",
+      "precipitation-records",
+      "temporal-resolution",
+      "spatial-resolution",
+      "instrumentation"
+    ],
+    "Spatial-Temporal-Scale": [
+      "catchment-scale",
+      "regional-scale",
+      "local-scale",
+      "short-term-study",
+      "long-term-study",
+      "seasonal-analysis",
+      "event-based-study"
+    ],
+    "Model-and-Theory": [
+      "hydrological-models",
+      "conceptual-frameworks",
+      "physical-based-models",
+      "statistical-models",
+      "machine-learning-approaches",
+      "model-calibration",
+      "empirical-relationships"
+    ],
+    "Results-Findings": [
+      "quantitative-results",
+      "model-outputs",
+      "performance-metrics",
+      "trend-analysis",
+      "pattern-identification",
+      "statistical-outcomes"
+    ],
+    "Data-Analysis": [
+      "statistical-methods",
+      "time-series-analysis",
+      "spatial-analysis",
+      "correlation-analysis",
+      "regression-analysis",
+      "frequency-analysis",
+      "extreme-value-analysis"
+    ],
+    "Discussion-Interpretation": [
+      "result-interpretation",
+      "mechanism-explanation",
+      "process-understanding",
+      "theoretical-implications",
+      "practical-implications",
+      "knowledge-integration"
+    ],
+    "Validation-Performance": [
+      "model-validation",
+      "performance-assessment",
+      "accuracy-evaluation",
+      "sensitivity-analysis",
+      "robustness-testing"
+    ],
+    "Limitations-Uncertainty": [
+      "methodological-limitations",
+      "data-limitations",
+      "assumption-limitations",
+      "uncertainty-quantification",
+      "error-analysis"
+    ],
+    "Applications-Implications": [
+      "water-resource-management",
+      "flood-management",
+      "drought-management",
+      "policy-implications",
+      "decision-support",
+      "environmental-management"
+    ],
+    "Future-Work": [
+      "research-directions",
+      "methodological-improvements",
+      "data-requirements",
+      "model-enhancements",
+      "collaborative-opportunities"
+    ],
+    "Conclusions": [
+      "key-findings",
+      "main-contributions",
+      "research-summary",
+      "final-recommendations"
+    ],
+    "Innovation-Contribution": [
+      "novel-approaches",
+      "methodological-innovations",
+      "breakthrough-findings",
+      "paradigm-shifts",
+      "creative-solutions"
+    ]},
+    "v3":{
+    "Metadata": [
+      "paper-title",
+      "authors", 
+      "journal-name",
+      "publication-year",
+      "doi",
+      "keywords",
+      "abstract"
+    ],
+    "Research-Background": [
+      "historical-context",
+      "theoretical-foundation", 
+      "field-evolution",
+      "current-state"
+    ],
+    "Literature-Review": [
+      "existing-research",
+      "previous-studies",
+      "knowledge-gaps",
+      "research-trends"
+    ],
+    "Problem-Statement": [
+      "research-gap",
+      "practical-challenges",
+      "knowledge-deficit",
+      "methodological-limitations"
+    ],
+    "Research-Objective": [
+      "primary-goals",
+      "research-questions", 
+      "hypotheses",
+      "specific-aims"
+    ],
+    "Study-Area": [
+      "geographic-description",
+      "physical-characteristics",
+      "climate-description",
+      "land-use-description"
+    ],
+    "Hydrological-Process": [
+      "process-description"
+    ],
+    "Research-Methodology": [
+      "experimental-design",
+      "data-collection-methods",
+      "analysis-approach",
+      "quality-assurance"
+    ],
+    "Data-Sources": [
+      "data-description",
+      "temporal-coverage",
+      "spatial-coverage",
+      "data-quality-issues"
+    ],
+    "Spatial-Temporal-Scale": [
+      "spatial-scale-description",
+      "temporal-scale-description",
+      "scale-interactions"
+    ],
+    "Models-Methods": [
+      "model-description",
+      "method-description",
+      "parameter-estimation",
+      "model-setup"
+    ],
+    "Results-Findings": [
+      "quantitative-results",
+      "qualitative-findings",
+      "key-patterns",
+      "performance-metrics"
+    ],
+    "Analysis-Techniques": [
+      "statistical-methods",
+      "analytical-approaches",
+      "processing-techniques"
+    ],
+    "Discussion-Interpretation": [
+      "result-interpretation",
+      "process-understanding",
+      "theoretical-implications",
+      "practical-implications"
+    ],
+    "Validation-Assessment": [
+      "validation-approach",
+      "performance-evaluation",
+      "accuracy-assessment",
+      "uncertainty-analysis"
+    ],
+    "Uncertainty-Limitations": [
+      "uncertainty-sources",
+      "methodological-limitations",
+      "data-limitations",
+      "assumption-limitations"
+    ],
+    "Applications-Management": [
+      "practical-applications",
+      "management-implications",
+      "policy-recommendations",
+      "operational-relevance"
+    ],
+    "Future-Research": [
+      "research-directions",
+      "methodological-improvements",
+      "data-needs",
+      "collaboration-opportunities"
+    ],
+    "Conclusions": [
+      "key-findings",
+      "main-contributions",
+      "final-recommendations"
+    ],
+    "Innovation-Novelty": [
+      "novel-contributions",
+      "methodological-advances",
+      "breakthrough-insights"
+    ]
+    }
+}

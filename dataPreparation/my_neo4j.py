@@ -4,7 +4,6 @@ from dotenv import load_dotenv
 from pydantic import BaseModel
 from typing import List
 import os
-
 #TODO: Create Relevant section on the properties of nodes and edges so that only that can be sent to the LLMs
 
 

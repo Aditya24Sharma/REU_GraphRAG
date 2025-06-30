@@ -1,0 +1,3 @@
+Rewrite the following query to better match factual statements and entity relationships that would appear in a knowledge graph. Convert questions into declarative statements, expand abbreviations, and include relevant entity properties or relationships.
+
+Query:

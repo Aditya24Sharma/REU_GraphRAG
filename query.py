@@ -1,4 +1,9 @@
-from vectorRAG import generate_response, retrieve_similar_chunks, listCollection, get_relevant_ext_ids
+from vectorRAG import (
+    generate_response,
+    retrieve_similar_chunks,
+    listCollection,
+    get_relevant_ext_ids,
+)
 import json
 import os
 from dataPreparation import text_chunking
@@ -10,11 +15,12 @@ import re
 
 load_dotenv()
 
-collection_name = 'mandil_entitites_db'
+collection_name = "mandil_entitites_db"
 
-query = ''
+query = ""
 
-def text_from_json(file_name = str)->List[str]:
+
+def text_from_json(file_name: str) -> List[str]:
     """
     Get formatted extractions values from the json file of the extracted data\
     Args:
@@ -24,23 +30,22 @@ def text_from_json(file_name = str)->List[str]:
         List of text for each extractions
     """
     texts = []
-    with open(file_name, 'r') as f:
+    with open(file_name, "r") as f:
         json_obj = json.load(f)
-    
-    for obj in json_obj['extractions']:
-        keywords = ', '.join([k for k in obj['keywords']])
-        ext_id = obj['extraction_id']
-        flc = obj['first_level_class']
-        slc = obj['second_level_class']
-        content = obj['extracted_content']
-        relevant = f'This data is from {ext_id} containing {flc} on {slc}. The content is {content} and contains the keywords {keywords}'
+
+    for obj in json_obj["extractions"]:
+        keywords = ", ".join([k for k in obj["keywords"]])
+        ext_id = obj["extraction_id"]
+        flc = obj["first_level_class"]
+        slc = obj["second_level_class"]
+        content = obj["extracted_content"]
+        relevant = f"This data is from {ext_id} containing {flc} on {slc}. The content is {content} and contains the keywords {keywords}"
         texts.append(relevant)
 
     return texts
 
 
- 
-if __name__ =='__main__':
+if __name__ == "__main__":
 
     # file_name = '/home/aditya/REU/Code/Graph_RAG/vectorRAG/mandli_et_al_coupling_coastal_and_hydrologic_models_through_next_generation_national_water_model_framework.json'
     # contents = text_from_json(file_name=file_name)
@@ -54,14 +59,14 @@ if __name__ =='__main__':
     #     }
     #     total_chunks.append(chunk)
 
-    # collection_name = 'P001'    
+    # collection_name = 'P001'
     # if store_chunks(chunks=total_chunks, collection_name=collection_name):
     #     pass
 
     # file_name2 = '/home/aditya/REU/Code/Graph_RAG/dataPreparation/markdowns/mandli_et_al_coupling_coastal_and_hydrologic_models_through_next_generation_national_water_model_framework.md'
     # with open(file_name2, 'r') as f:
     #     content = f.read()
-    
+
     # chunks = text_chunking(text=content, chunk_size=200, chunk_overlap=20)
     # total_chunks=[]
     # for idx, c in enumerate(chunks):
@@ -73,34 +78,34 @@ if __name__ =='__main__':
     #     total_chunks.append(chunk)
 
     # collection_name = 'P001_md'
-    # store_chunks(chunks=total_chunks, collection_name=collection_name) 
-    neo4j_uri=os.getenv('NEO4J_URI')
-    neo4j_username=os.getenv('NEO4J_USERNAME')
-    neo4j_password=os.getenv('NEO4J_PASSWORD')
-    openai_api_key=os.getenv('OPENAI_API_KEY')
+    # store_chunks(chunks=total_chunks, collection_name=collection_name)
+    neo4j_uri = os.getenv("NEO4J_URI")
+    neo4j_username = os.getenv("NEO4J_USERNAME")
+    neo4j_password = os.getenv("NEO4J_PASSWORD")
+    openai_api_key = os.getenv("OPENAI_API_KEY")
     # print(type(neo4j_username))
-    graph = GraphRetriever(neo4j_uri=neo4j_uri, username=neo4j_username, password=neo4j_password)
+    graph = GraphRetriever(
+        neo4j_uri=neo4j_uri, username=neo4j_username, password=neo4j_password
+    )
     while True:
-        print('Type q to quit or type your query')
-        query = input('Enter your query: ')
-        print(f'Available collecitons: {[c.name for c in listCollection()]}')
-        collection_name = input('Enter collection to serach in: ')
-        if query == 'q':
+        print("Type q to quit or type your query")
+        query = input("Enter your query: ")
+        print(f"Available collecitons: {[c.name for c in listCollection()]}")
+        collection_name = input("Enter collection to serach in: ")
+        if query == "q":
             break
-        
-        #creating texts to be chunked
-        similar_chunks = retrieve_similar_chunks(query=query, collection_name=collection_name, top_k=8)
+
+        # creating texts to be chunked
+        similar_chunks = retrieve_similar_chunks(
+            query=query, collection_name=collection_name, top_k=8
+        )
         # print('Similar chunks for the given query: ', similar_chunks),
         context = similar_chunks
-        if collection_name == 'P001':
+        if collection_name == "P001":
             answer = get_relevant_ext_ids(context=similar_chunks, query=query)
-            print('Got answer: ', answer)
-            
+            print("Got answer: ", answer)
+
             if answer:
                 context = graph.get_neighbors(nodes=answer)
 
         print(generate_response(context=context, query=query))
-
-        
-
-
