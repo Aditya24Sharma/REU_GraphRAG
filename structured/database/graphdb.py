@@ -16,7 +16,7 @@ from . import config
 # TODO: Create Relevant section on the properties of nodes & edge that only that can be sent to the LLMs
 
 logger = logging.getLogger(__name__)
-logging.getLogger("no4j").setLevel(logging.WARNING)
+logging.getLogger("neo4j").setLevel(logging.WARNING)
 
 
 class Node(BaseModel):

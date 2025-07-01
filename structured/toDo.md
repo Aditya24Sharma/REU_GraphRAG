@@ -5,3 +5,6 @@ GraphRAG
 [X] Combine the relevant chunks from 'Vector' and 'KG' collections
 [X] Send them to llm to extract answer. 
 
+[X] Add a query reviser in the chain
+[X] Check the improvement when implementing a query reviser in the chain (Answer quality improved)
+

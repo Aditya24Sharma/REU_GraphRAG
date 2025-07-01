@@ -13,6 +13,7 @@ from utils import convert_txt_to_json
 from . import config
 
 logger = logging.getLogger(__name__)
+logging.getLogger("httpx").setLevel(logging.WARNING)
 
 
 class LLM:
