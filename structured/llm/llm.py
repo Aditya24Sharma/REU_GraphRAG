@@ -92,7 +92,7 @@ class LLM:
                 system_prompt = f.read()
 
             system_prompt = system_prompt.format(context=context)
-
+            print("System prompt given to the LLM: ", system_prompt)
             response = self.client.chat.completions.create(
                 model=self.model,
                 messages=[

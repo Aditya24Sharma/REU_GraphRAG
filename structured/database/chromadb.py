@@ -13,7 +13,7 @@ from pydantic import BaseModel
 from sentence_transformers import SentenceTransformer
 
 
-from utils import json_to_txt
+from utils import json_to_txt, text_chunking
 from . import config
 
 logger = logging.getLogger(__name__)
@@ -151,20 +151,30 @@ class Chromadb:
         collections = self.chroma_client.list_collections()
         return list(collections) or []
 
-    def store_to_db(self, input_json_folder: str, collection_name: str) -> None:
+    def store_json_to_db(
+        self,
+        collection_name: str = "",
+        input_file: str = "",
+        input_json_folder: str = "",
+    ) -> None:
         """
-        store the contents from json file to the db
+        store the contents from json file to the db. If input file is passed then only it will be processed, else the all the fiels in the input_json_folder will be processed.
 
         Args:
+            input_file(str): path to the file to be stored in the database
             input_json_folder(str): folder to extract the json files from
             collection_nam(str): name of the collection of db
         Returns:
             None
         """
-        try:
-            # for file in os.listdir(input_json_folder):
-            file = os.listdir(input_json_folder)[1]
-            file_path = os.path.join(input_json_folder, file)
+
+        def storing_json(file_path: str):
+            """
+            internal function to store the file contents inside a file to database
+            Args:
+                file_path(str): Name of the file to be store in the database
+
+            """
             paper_id = ""
             with open(file_path, "r") as f:
                 obj = json.load(f)
@@ -185,5 +195,77 @@ class Chromadb:
                 logger.info(
                     f"Succesfully stored to db under collection name: {collection_name}"
                 )
+            return
+
+        try:
+            if input_file:
+                file_path = input_file
+                storing_json(file_path=file_path)
+            else:
+                for file in os.listdir(input_json_folder):
+                    file = os.listdir(input_json_folder)[1]
+                    file_path = os.path.join(input_json_folder, file)
+                    storing_json(file_path=file_path)
+
+        except Exception as e:
+            logger.error("Failed to store to db: %s", e)
+
+    def store_text_to_db(
+        self,
+        collection_name: str = "",
+        input_file: str = "",
+        input_json_folder: str = "",
+    ) -> None:
+        """
+        store the contents from json file to the db. If input file is passed then only it will be processed, else the all the fiels in the input_json_folder will be processed.
+
+        Args:
+            input_file(str): path to the file to be stored in the database
+            input_json_folder(str): folder to extract the md files from
+            collection_nam(str): name of the collection of db
+        Returns:
+            None
+        """
+
+        def storing_text(file_path: str):
+            """
+            internal function to store the file contents inside a file to database
+            Args:
+                file_path(str): Name of the file to be store in the database
+
+            """
+            chunks = []
+            file_name = file_path.split("/")[-1]
+            with open(file_path, "r") as f:
+                contents = f.read()
+                chunks = text_chunking(
+                    text=contents, chunk_size=2000, chunk_overlap=200
+                )
+
+            total_chunks = []
+            for idx, c in enumerate(chunks):
+                # since the text(c) is small we are not going to split the text into chunks
+                chunk = {
+                    "chunk": c,
+                    "source": file_name,
+                    "chunk_id": file_name + str(idx),
+                }
+                total_chunks.append(chunk)
+            if self.store_chunks(total_chunks, collection_name=collection_name):
+                logger.info(
+                    f"Succesfully stored to db under collection name: {collection_name}"
+                )
+            return
+
+        try:
+            if input_file:
+                file_path = input_file
+                storing_text(file_path=file_path)
+            else:
+                for file in os.listdir(input_json_folder):
+                    file = os.listdir(input_json_folder)[1]
+                    file_path = os.path.join(input_json_folder, file)
+                    storing_text(file_path=file_path)
+
         except Exception as e:
             logger.error("Failed to store to db: %s", e)

@@ -250,7 +250,7 @@ class Neo4j:
                     params = {"node_id": node}
                     # result = session.run(Query(cypher_other, params))
                     result = session.run(cypher_other)
-                    print(f"Got cypher results {cypher_other}")
+                    # print(f"Got cypher results {cypher_other}")
 
                     for record in result:
                         rec = {}
@@ -279,10 +279,12 @@ class Neo4j:
                                     paper_prim_meth = neighbour._properties[
                                         "primary_methods"
                                     ]
+                                    paper_id = neighbour._properties["id"]
                                     output["Paper"] = {
                                         "main_theme": paper_theme,
                                         "Key_contributions": paper_key_contr,
                                         "paper_prim_meth": paper_prim_meth,
+                                        "paper_id": paper_id,
                                     }
                                 pass
                             else:
@@ -294,9 +296,8 @@ class Neo4j:
                                 }
                         output["Record"].append(rec)
                     final_output.append(output)
-                    logger.info(
-                        f"The final extracted contents retrieved are:{final_output}"
-                    )
+
+            logger.info(f"Successfully extracted {len(final_output)} neighbors")
             return final_output
         except Exception as e:
             logger.error(f"Failed to retrieve nodes {e}")
