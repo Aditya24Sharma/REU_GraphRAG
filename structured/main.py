@@ -7,9 +7,10 @@ import json
 import logging
 from pathlib import Path
 
-from utils import setup_logging, json_to_txt, chunking
+from utils import setup_logging
 from database import Neo4j, Chromadb
 from llm import LLM
+from query import Query
 
 setup_logging(log_level="INFO")
 
@@ -18,9 +19,10 @@ logger = logging.getLogger(__name__)
 logger.info("Application started")
 
 if __name__ == "__main__":
-    llm = LLM()
-    neo4j = Neo4j()
+    # llm = LLM()
+    # neo4j = Neo4j()
     chromadb = Chromadb()
+    query = Query()
     #
     project_root = Path(__file__).parent
     # print(project_root)
@@ -76,49 +78,50 @@ if __name__ == "__main__":
         user_query = input("Enter your query: ")
         if user_query == "q":
             break
-        revised_query = json.loads(llm.revise_query(user_query))
-
         available_collections = [c.name for c in chromadb.list_collections()]
         print(f"Available collecitons: {available_collections}")
         collection_name = input("Enter collection to serach in: ")
-
-        if collection_name.lower() == "both":
-            overall_context = []
-            for c in available_collections:
-                similar_chunks = set()
-                for query in revised_query:
-                    similar = chromadb.retrieve_similar_chunks(
-                        query=query, collection_name=c, top_k=8
-                    )
-                    for s in similar:
-                        similar_chunks.add(s)
-                if c == "Graph":
-                    answer = llm.extract_relevant_ids(
-                        context=list(similar_chunks), query=user_query
-                    )
-                    # print("Got answer: ", answer)
-                    context = [""]
-                    if answer:
-                        context = neo4j.retrieve_neighbors(nodes=answer)
-                    overall_context.extend(context)
-                else:
-                    overall_context.extend(list(similar_chunks))
-            print(llm.query_with_context(context=overall_context, query=user_query))
-        else:
-            similar_chunks = chromadb.retrieve_similar_chunks(
-                query=user_query, collection_name=collection_name, top_k=8
-            )
-            if collection_name == "Graph":
-                answer = llm.extract_relevant_ids(
-                    context=similar_chunks, query=user_query
-                )
-                # print("Got answer: ", answer)
-                context = [""]
-                if answer:
-                    context = neo4j.retrieve_neighbors(nodes=answer)
-                print(llm.query_with_context(context=context, query=user_query))
-            else:
-                print(llm.query_with_context(context=similar_chunks, query=user_query))
+        answer = query.query(user_query=user_query, collection_name=collection_name)
+        print(answer)
+        # revised_query = json.loads(llm.revise_query(user_query))
+        #
+        #        if collection_name.lower() == "both":
+        #     overall_context = []
+        #     for c in available_collections:
+        #         similar_chunks = set()
+        #         for query in revised_query:
+        #             similar = chromadb.retrieve_similar_chunks(
+        #                 query=query, collection_name=c, top_k=8
+        #             )
+        #             for s in similar:
+        #                 similar_chunks.add(s)
+        #         if c == "Graph":
+        #             answer = llm.extract_relevant_ids(
+        #                 context=list(similar_chunks), query=user_query
+        #             )
+        #             # print("Got answer: ", answer)
+        #             context = [""]
+        #             if answer:
+        #                 context = neo4j.retrieve_neighbors(nodes=answer)
+        #             overall_context.extend(context)
+        #         else:
+        #             overall_context.extend(list(similar_chunks))
+        #     print(llm.query_with_context(context=overall_context, query=user_query))
+        # else:
+        #     similar_chunks = chromadb.retrieve_similar_chunks(
+        #         query=user_query, collection_name=collection_name, top_k=8
+        #     )
+        #     if collection_name.lower() == "graph":
+        #         answer = llm.extract_relevant_ids(
+        #             context=similar_chunks, query=user_query
+        #         )
+        #         # print("Got answer: ", answer)
+        #         context = [""]
+        #         if answer:
+        #             context = neo4j.retrieve_neighbors(nodes=answer)
+        #         print(llm.query_with_context(context=context, query=user_query))
+        #     else:
+        #         print(llm.query_with_context(context=similar_chunks, query=user_query))
 
     # for file in os.listdir(input_json_folder):
     #     file_path = os.path.join(input_json_folder, file)

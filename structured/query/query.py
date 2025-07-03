@@ -35,8 +35,46 @@ class Query:
         Returns:
             Answer from the LLM
         """
-        revisedQuery = self.llm.revise_query(query=user_query)
-        if not collection_name:
-            pass
-        print(user_query)
-        return ""
+        revised_query = json.loads(self.llm.revise_query(query=user_query))
+        output = ""
+        available_collections = [c.name for c in self.chromadb.list_collections()]
+        if collection_name.lower() == "both":
+            overall_context = []
+            for c in available_collections:
+                similar_chunks = set()
+                for query in revised_query:
+                    similar = self.chromadb.retrieve_similar_chunks(
+                        query=query, collection_name=c, top_k=8
+                    )
+                    for s in similar:
+                        similar_chunks.add(s)
+                if c == "Graph":
+                    answer = self.llm.extract_relevant_ids(
+                        context=list(similar_chunks), query=user_query
+                    )
+                    context = [""]
+                    if answer:
+                        context = self.neo4j.retrieve_neighbors(nodes=answer)
+                    overall_context.extend(context)
+                else:
+                    overall_context.extend(list(similar_chunks))
+            output = self.llm.query_with_context(
+                context=overall_context, query=user_query
+            )
+        else:
+            similar_chunks = self.chromadb.retrieve_similar_chunks(
+                query=user_query, collection_name=collection_name, top_k=8
+            )
+            if collection_name.lower() == "graph":
+                answer = self.llm.extract_relevant_ids(
+                    context=similar_chunks, query=user_query
+                )
+                context = [""]
+                if answer:
+                    context = self.neo4j.retrieve_neighbors(nodes=answer)
+                output = self.llm.query_with_context(context=context, query=user_query)
+            else:
+                output = self.llm.query_with_context(
+                    context=similar_chunks, query=user_query
+                )
+        return output
