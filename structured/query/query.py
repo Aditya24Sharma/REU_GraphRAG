@@ -3,6 +3,7 @@ Query class for a single user query session
 """
 
 import os
+from typing import List
 import json
 import logging
 from pathlib import Path
@@ -22,6 +23,7 @@ class Query:
 
     def __init__(self):
         self.messages = []  # Store all the context for previous messages
+        self.papers = []
         self.llm = LLM()
         self.chromadb = Chromadb()
         self.neo4j = Neo4j()
@@ -52,6 +54,7 @@ class Query:
                     answer = self.llm.extract_relevant_ids(
                         context=list(similar_chunks), query=user_query
                     )
+
                     context = [""]
                     if answer:
                         context = self.neo4j.retrieve_neighbors(nodes=answer)
@@ -78,3 +81,10 @@ class Query:
                     context=similar_chunks, query=user_query
                 )
         return output
+
+    def extract_paper_id(self, extraction_ids: List[str]) -> str:
+        """
+        extract the paper_id
+        """
+
+        return ""
