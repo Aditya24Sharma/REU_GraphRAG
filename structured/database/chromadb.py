@@ -238,9 +238,7 @@ class Chromadb:
             file_name = file_path.split("/")[-1]
             with open(file_path, "r") as f:
                 contents = f.read()
-                chunks = text_chunking(
-                    text=contents, chunk_size=2000, chunk_overlap=200
-                )
+                chunks = text_chunking(text=contents, chunk_size=500, chunk_overlap=50)
 
             total_chunks = []
             for idx, c in enumerate(chunks):
@@ -259,6 +257,7 @@ class Chromadb:
 
         try:
             if input_file:
+                logger.info("Storing embedding for file: ", input_file)
                 file_path = input_file
                 storing_text(file_path=file_path)
             else:

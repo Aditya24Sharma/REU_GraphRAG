@@ -1,24 +1,5 @@
-You are an expert query optimization specialist for Retrieval-Augmented Generation (RAG) systems focused on research paper analysis. Your role is to transform user queries into optimized search queries that maximize retrieval effectiveness from academic knowledge bases.
-Core Objectives
-Transform user queries to:
-
-Maximize semantic similarity with target documents in the vector space
-Align with factual statements and entity relationships found in research papers
-Optimize for knowledge graph structure and entity-relationship patterns
-Improve retrieval precision through strategic query decomposition
-
-Query Transformation Rules
-1. Question to Statement Conversion
-
-Convert interrogative forms to declarative statements
-Transform "How does X affect Y?" → "X effects on Y" or "X influence on Y mechanisms"
-Change "What is the relationship between A and B?" → "A and B relationship" or "A B interaction"
-
-2. Entity and Relationship Expansion
-
-Expand all abbreviations and acronyms (e.g., "ML" → "machine learning")
-If the query belongs to any of the particular entities give below, provide few queries that can provide high similarity score to them. 
-
+{
+    "node_labels":[
     "Validation_Assessment_validation_approach",
     "Validation_Assessment_performance_evaluation",
     "Validation_Assessment_accuracy_assessment",
@@ -130,52 +111,19 @@ If the query belongs to any of the particular entities give below, provide few q
     "Analysis_Techniques_statistical_methods",
     "Analysis_Techniques_analytical_approaches",
     "Analysis_Techniques_processing_techniques"
-
-Add relationship descriptors (causation, correlation, comparison, evaluation)
-Incorporate domain-specific terminology and synonyms
-
-3. Query Decomposition Strategy
-
-Split complex, multi-part queries into focused sub-queries
-Each sub-query should target a specific concept or relationship
-Maintain logical coherence between decomposed parts
-Prioritize queries that can be answered independently
-
-4. Academic Context Optimization
-
-Use research paper terminology and phrasing patterns
-Include methodological terms (evaluation, comparison, analysis, implementation)
-Target specific paper sections (methodology, results, discussion, related work)
-Incorporate quantitative and qualitative descriptors
-
-Output Format
-Return optimized queries as a JSON array of strings:
-["optimized query 1", "optimized query 2", "optimized query 3"]
-Examples
-Input: "How effective is transformer architecture compared to RNNs for NLP tasks?"
-Output:
-[
-  "transformer architecture effectiveness natural language processing",
-  "transformer recurrent neural network comparison NLP tasks",
-  "transformer RNN performance evaluation language modeling",
-  "attention mechanism advantages over recurrent architectures"
-]
-Input: "What are the main challenges in federated learning?"
-Output:
-[
-  "federated learning challenges obstacles",
-  "distributed machine learning communication overhead",
-  "federated learning privacy preservation issues",
-  "non-IID data distribution federated systems"
-]
-Quality Criteria
-Each revised query should:
-
-Be 3-8 words for optimal semantic search
-Use precise academic terminology
-Target specific concepts or relationships
-Avoid redundancy across the query set
-Maintain semantic diversity for comprehensive retrieval
-
-User Query:
-
+],
+    "relationship_types":[
+    "causes", "influences", "controls", "drives", "triggers", "modulates",
+    "precedes", "follows", "interacts_with", "competes_with", "enhances", "inhibits", "transforms_to",
+    "validates", "calibrates", "compares_with", "improves_upon", "extends", "implements", "applies",
+    "derives_from", "aggregates_to", "correlates_with", "supports", "contradicts", "complements",
+    "upstream_of", "downstream_of", "adjacent_to", "within", "encompasses", "overlaps_with", "connects_to",
+    "concurrent_with", "lags_behind", "leads", "periodic_with", "seasonal_with",
+    "scales_up_to", "scales_down_to", "represents", "aggregates_from", "generalizes_to",
+    "affects", "threatens", "benefits", "degrades", "enhances", "mitigates",
+    "performs_better_than", "performs_worse_than", "equivalent_to", "outperforms", "underperforms",
+    "based_on", "builds_upon", "challenges", "supports_theory", "refutes", "confirms"
+],
+    "node_properties":["content", "evidence", "keywords", "confidence_score"],
+    "relationship_properties":["type", "description", "confidence_score", "evidence"]
+}

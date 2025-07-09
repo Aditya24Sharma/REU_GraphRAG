@@ -6,7 +6,7 @@ import os
 import re
 import logging
 import time
-from typing import List, Optional
+from typing import Any, List, Optional
 from openai import OpenAI
 
 from utils import convert_txt_to_json
@@ -70,16 +70,17 @@ class LLM:
                 ],
             )
             answer = response.choices[0].message.content or ""
+            # print(answer)
             return answer
         except Exception as e:
             logger.error(f"Failed to generate revised query: {e}")
             return ""
 
-    def query_with_context(self, context: List[str], query: str) -> str:
+    def query_with_context(self, context: Any, query: str) -> str:
         """
         Generates a response using the LLM for the given query with the provided context.
         Args:
-            context(list[str]): similar chunks to the query
+            context(Any): similar chunks to the query
             query(str): The question being asked by the user
 
         Returns:

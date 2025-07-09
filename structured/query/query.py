@@ -41,12 +41,12 @@ class Query:
         output = ""
         available_collections = [c.name for c in self.chromadb.list_collections()]
         if collection_name.lower() == "both":
-            overall_context = []
+            overall_context = {"Vector": [], "Graph": []}
             for c in available_collections:
                 similar_chunks = set()
                 for query in revised_query:
                     similar = self.chromadb.retrieve_similar_chunks(
-                        query=query, collection_name=c, top_k=8
+                        query=query, collection_name=c, top_k=10
                     )
                     for s in similar:
                         similar_chunks.add(s)
@@ -58,15 +58,15 @@ class Query:
                     context = [""]
                     if answer:
                         context = self.neo4j.retrieve_neighbors(nodes=answer)
-                    overall_context.extend(context)
+                    overall_context["Graph"].extend(context)
                 else:
-                    overall_context.extend(list(similar_chunks))
+                    overall_context["Vector"].extend(list(similar_chunks))
             output = self.llm.query_with_context(
                 context=overall_context, query=user_query
             )
         else:
             similar_chunks = self.chromadb.retrieve_similar_chunks(
-                query=user_query, collection_name=collection_name, top_k=8
+                query=user_query, collection_name=collection_name, top_k=10
             )
             if collection_name.lower() == "graph":
                 answer = self.llm.extract_relevant_ids(

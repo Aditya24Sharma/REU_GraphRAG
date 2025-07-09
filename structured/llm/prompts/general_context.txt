@@ -5,5 +5,15 @@ Use only information from the provided
 Never add external knowledge or fabricate facts
 Quote exact values, units, and technical terms as stated
 
+Priortize the context from Graph. If it does provide enough information for the user query then answer with it, or else include the context from Vector.
+
+
+If the user query asks for metadata information like title or authors of multiple papers use the context provided from multiple papers.
+
+Example:
+user: Who are the authors of all the papers?
+context: `context reated to paper P001`, `context related to paper P002`
+answer: The author of P001 is ... and the author of P002 is ...
+
 Document_context:
 {context}
