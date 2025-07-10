@@ -9,7 +9,7 @@ import time
 from typing import Any, List, Optional
 from openai import OpenAI
 
-from utils import convert_txt_to_json
+from utils import convert_txt_to_json, tokencount_from_text
 from . import config
 
 logger = logging.getLogger(__name__)
@@ -149,7 +149,7 @@ class LLM:
         system_prompt_file: str,
         output_folder: str,
         output_folder_json: str,
-        folder_name: str = "../data/markdowns/",
+        folder_name: str = "",
         model: str = "gpt-4o",
     ):
         """
@@ -180,6 +180,9 @@ class LLM:
                         file_content=file_content,
                         model=model,
                     )
+                    self.write_to_output(
+                        content=response, file_name=file, output_folder=output_folder
+                    )
                     convert_txt_to_json(
                         file_name=file,
                         content=response,
@@ -187,13 +190,31 @@ class LLM:
                     )
                 logger.info(f"Generated complete ontology for {folder_name}")
             else:
-                content_file_path = os.path.join(folder_name, file_name)
+                logger.info("File provided so extracting from the file")
+                if folder_name:
+                    content_file_path = os.path.join(folder_name, file_name)
+                else:
+                    content_file_path = file_name
                 file_content = self.extract_content(file_path=content_file_path)
+                logger.info(
+                    f"Token count for the file {content_file_path.split('/')[-1]} is"
+                )
+                tokencount_from_text(text=file_content)
                 response = self.llm_ontology(
                     system_prompt=system_prompt, file_content=file_content
                 )
+
+                # Save to output_folder
+                file_title = content_file_path.split("/")[-1].strip(".md")
+                self.write_to_output(
+                    content=response, file_name=file_title, output_folder=output_folder
+                )
+                # file_path_to_save = os.path.join(output_folder, file_title)
+                # with open(file_path_to_save, "w") as f:
+                #     f.write(response)
+                extracted_file = os.path.join(output_folder, (file_title + ".txt"))
                 convert_txt_to_json(
-                    file_name=file_name,
+                    file_name=extracted_file,
                     content=response,
                     output_folder=output_folder_json,
                 )
@@ -236,6 +257,7 @@ class LLM:
         """
         with open(file_path, "r") as f:
             content = f.read()
+        logger.info(f"Success fully extracted form {file_path}")
         return content
 
     def llm_ontology(
@@ -251,6 +273,7 @@ class LLM:
             content(str): Content extracted from the llm
         """
         try:
+            logger.info("LLM Extracting the ontology")
             start = time.time()
             response = self.client.chat.completions.create(
                 model=model,
@@ -258,6 +281,7 @@ class LLM:
                     {"role": "system", "content": system_prompt},
                     {"role": "user", "content": file_content},
                 ],
+                timeout=300,
             )
             answer = response.choices[0].message.content
             end = time.time()

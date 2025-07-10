@@ -90,7 +90,7 @@ class Neo4j:
             )
             return True
         except Exception as e:
-            logger.error(f"Failed to create node: {e}")
+            logger.error(f"Failed to create node: {e, node}")
             return False
 
     def create_relationship(self, tx, relationship: Relationship) -> bool:
@@ -125,7 +125,7 @@ class Neo4j:
             )
             return True
         except Exception as e:
-            logger.error(f"Failed to create relationship {e}")
+            logger.error(f"Failed to create relationship {e, relationship}")
             return False
 
     def create_paper_connections(
@@ -168,7 +168,7 @@ class Neo4j:
             logger.info("Success: Created paper link")
             return True
         except Exception as e:
-            logger.error(f"Failed to create paper link {e}")
+            logger.error(f"Failed to create paper link {e, paper}")
             return False
 
     def create_knowledge_graph(self, file_path: str) -> None:

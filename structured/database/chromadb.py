@@ -257,7 +257,7 @@ class Chromadb:
 
         try:
             if input_file:
-                logger.info("Storing embedding for file: ", input_file)
+                logger.info(f"Storing embedding for file: {str(input_file)}")
                 file_path = input_file
                 storing_text(file_path=file_path)
             else:

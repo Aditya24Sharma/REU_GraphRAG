@@ -29,23 +29,24 @@ if __name__ == "__main__":
     # print(type(project_root))
     #
     # # get the system prompt to extract the ontology from the files
-    # sys_prompt_file_path = project_root / "kg_prompts" / "prompts" / "prompt_v2.txt"
+    # sys_prompt_file_path = project_root / "kg_prompts" / "prompts" / "prompt_v3.txt"
     #
     # # file to extract the ontology from
     # file_path = "/home/aditya/REU/Code/Graph_RAG/structured/data/markdowns/Establishing_flood_thresholds_for_sea_level_rise_impact_communication.md"
 
     # file_path = "/home/aditya/REU/Code/Graph_RAG/structured/data/markdowns/mandli_et_al_coupling_coastal_and_hydrologic_models_through_next_generation_national_water_model_framework.md"
+    # file_path = "/home/aditya/REU/Code/Graph_RAG/structured/data/markdowns/Rapid_intensification_of_tropical_cyclones_in_the_Gulf_of_Mexico_is_more_likely_during_marine_heatwaves.md"
 
     # output_folder = project_root / "data" / "ontology_outputs" / "v3"
     # output_folder_json = project_root / "data" / "ontology_outputs_json" / "v3"
     #
     # llm.generate_ontology(
-    #     file_name=file_path,
-    #     system_prompt_file=str(sys_prompt_file_path),
-    #     output_folder=str(output_folder),
-    #     output_folder_json=str(output_folder_json),
+    # file_name=file_path,
+    # system_prompt_file=str(sys_prompt_file_path),
+    # output_folder=str(output_folder),
+    # output_folder_json=str(output_folder_json),
     # )
-    #
+
     # # sending all the file from ontology_output_json to be converted to knowledge graph
     # input_json_folder = project_root / "data" / "ontology_outputs_json" / "v3"
     # input_markdown_folder = project_root / "data" / "text_outputs"
