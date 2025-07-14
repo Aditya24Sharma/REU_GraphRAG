@@ -81,10 +81,3 @@ class Query:
                     context=similar_chunks, query=user_query
                 )
         return output
-
-    def extract_paper_id(self, extraction_ids: List[str]) -> str:
-        """
-        extract the paper_id
-        """
-
-        return ""
