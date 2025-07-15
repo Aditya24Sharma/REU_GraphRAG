@@ -29,7 +29,7 @@ if __name__ == "__main__":
     # print(type(project_root))
     #
     # # get the system prompt to extract the ontology from the files
-    # sys_prompt_file_path = project_root / "kg_prompts" / "prompts" / "prompt_v3.txt"
+    sys_prompt_file_path = project_root / "kg_prompts" / "prompts" / "prompt_v3.txt"
     #
     # # file to extract the ontology from
     # file_path = "/home/aditya/REU/Code/Graph_RAG/structured/data/markdowns/Establishing_flood_thresholds_for_sea_level_rise_impact_communication.md"
@@ -37,14 +37,17 @@ if __name__ == "__main__":
     # file_path = "/home/aditya/REU/Code/Graph_RAG/structured/data/markdowns/mandli_et_al_coupling_coastal_and_hydrologic_models_through_next_generation_national_water_model_framework.md"
     # file_path = "/home/aditya/REU/Code/Graph_RAG/structured/data/markdowns/Rapid_intensification_of_tropical_cyclones_in_the_Gulf_of_Mexico_is_more_likely_during_marine_heatwaves.md"
 
+    # file_path = "/home/aditya/REU/Code/Graph_RAG/structured/data/markdowns/A_data_driven_framework_for_an_efficient_block_level_coastal_flood_risk_assessment.md"
+
+    # file_path = "/home/aditya/REU/Code/Graph_RAG/structured/data/markdowns/Earth_s_Future___2024___Radfar___Global_Predictability_of_Marine_Heatwave_Induced_Rapid_Intensification_of_Tropical.md"
     # output_folder = project_root / "data" / "ontology_outputs" / "v3"
     # output_folder_json = project_root / "data" / "ontology_outputs_json" / "v3"
-    #
+
     # llm.generate_ontology(
-    # file_name=file_path,
-    # system_prompt_file=str(sys_prompt_file_path),
-    # output_folder=str(output_folder),
-    # output_folder_json=str(output_folder_json),
+    #     file_name=file_path,
+    #     system_prompt_file=str(sys_prompt_file_path),
+    #     output_folder=str(output_folder),
+    #     output_folder_json=str(output_folder_json),
     # )
 
     # # sending all the file from ontology_output_json to be converted to knowledge graph
@@ -59,17 +62,18 @@ if __name__ == "__main__":
     # )
 
     # STORING DATA
-    # input_json_folder = project_root / "data" / "ontology_outputs_json" / "v3"
-    # input_markdown_folder = project_root / "data" / "text_outputs"
-    # file_path = ""
-    # for file in os.listdir(input_json_folder):
-    #     file_path = os.path.join(input_json_folder, file)
-    #     neo4j.create_knowledge_graph(file_path=file_path)
-    #     chromadb.store_json_to_db(input_file=file_path, collection_name="Graph")
+    input_json_folder = project_root / "data" / "ontology_outputs_json" / "v3"
+    input_markdown_folder = project_root / "data" / "text_outputs"
+    file_path = ""
+    for file in os.listdir(input_json_folder):
+        file_path = os.path.join(input_json_folder, file)
+        neo4j.create_knowledge_graph(file_path=file_path)
+        chromadb.store_json_to_db(input_file=file_path, collection_name="Graph")
     #
-    # for file in os.listdir(input_markdown_folder):
-    #     file_path = os.path.join(input_markdown_folder, file)
-    #     chromadb.store_text_to_db(input_file=file_path, collection_name="Vector")
+    for file in os.listdir(input_markdown_folder):
+        # print(file)
+        file_path = os.path.join(input_markdown_folder, file)
+        chromadb.store_text_to_db(input_file=file_path, collection_name="Vector")
 
     # file = os.listdir(input_json_folder)[1]
     # file_path = os.path.join(input_json_folder, file)
@@ -80,7 +84,7 @@ if __name__ == "__main__":
     # chromadb.store_json_to_db(
     #     input_file=str(input_json_file), collection_name=collection_name
     # )
-    #
+
     # collection_name = "Vector"
     # chromadb.store_text_to_db(input_file=file_path, collection_name=collection_name)
 
@@ -88,16 +92,16 @@ if __name__ == "__main__":
     # chromadb.delete_collection(collection_name="Vector")
 
     # Querying
-    while True:
-        print("Type q to quit or type your query")
-        user_query = input("Enter your query: ")
-        if user_query == "q":
-            break
-        available_collections = [c.name for c in chromadb.list_collections()]
-        print(f"Available collecitons: {available_collections}")
-        collection_name = input("Enter collection to serach in: ")
-        answer = query.query(user_query=user_query, collection_name=collection_name)
-        print(answer)
+    # while True:
+    # print("Type q to quit or type your query")
+    # user_query = input("Enter your query: ")
+    # if user_query == "q":
+    #     break
+    # available_collections = [c.name for c in chromadb.list_collections()]
+    # print(f"Available collecitons: {available_collections}")
+    # collection_name = input("Enter collection to serach in: ")
+    # answer = query.query(user_query=user_query, collection_name=collection_name)
+    # print(answer)
 
     # revised_query = json.loads(llm.revise_query(user_query))
     #

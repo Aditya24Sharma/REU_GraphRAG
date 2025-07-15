@@ -2,6 +2,7 @@
 import { useState, useEffect, useRef } from "react";
 import { fetchAnswer } from "../api/api";
 import { toast } from "react-toastify";
+import ReactMarkdown from "react-markdown";
 
 type Message = {
     role: 'user' | 'assistant';
@@ -32,7 +33,6 @@ export default function Chatbox() {
         const userQuery = e.target.message.value
         const res = await fetchAnswer(userQuery)
         if (res?.code == 200) {
-            console.log("Got Response", res)
             const answer = res.message.answer
             setMessages(prev => {
                 const allMessages = [...prev];
@@ -89,11 +89,13 @@ export default function Chatbox() {
 
 
     return (
-        <div className="p-2 border-2 border-gray-300 rounded-md bg-gray-900 h-full">
+        <div className="w-[50%] p-2 border-2 border-gray-300 rounded-md bg-gray-900">
             <div ref={chatRef} className="w-full h-[calc(100%-50px)] py-1 mb-2 flex flex-col gap-2 text-sm overflow-y-auto no-scrollbar">
                 {messages.map((message, index) => (
                     <div key={index} className={`max-w-[80%] ${message.role === 'user' ? 'bg-gray-200 rounded-sm p-1 px-2 ml-auto mt-0 text-black' : 'bg-blue-500 rounded-sm p-1 px-2 mr-auto mt-0 text-white'}`}>
-                        {message.content}
+                        <ReactMarkdown>
+                            {message.content}
+                        </ReactMarkdown>
                         {isStreaming && index === messages.length - 1 && (
                             <span className="inline-block w-1 h-4 ml-1 bg-white animate-pulse" />
                         )}

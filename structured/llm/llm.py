@@ -281,7 +281,7 @@ class LLM:
                     {"role": "system", "content": system_prompt},
                     {"role": "user", "content": file_content},
                 ],
-                timeout=300,
+                timeout=400,
             )
             answer = response.choices[0].message.content
             end = time.time()
