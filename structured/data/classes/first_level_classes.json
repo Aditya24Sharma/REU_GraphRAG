@@ -1,0 +1,226 @@
+{
+    "v1":   [
+    {
+      "class_name": "Research-Background",
+      "description": "Contextual information and foundational knowledge"
+    },
+    {
+      "class_name": "Literature-Review",
+      "description": "Related work and existing research analysis"
+    },
+    {
+      "class_name": "Problem-Statement",
+      "description": "Research problems, gaps, and challenges identified"
+    },
+    {
+      "class_name": "Research-Objective",
+      "description": "Goals, aims, hypotheses, and research questions"
+    },
+    {
+      "class_name": "Research-Significance",
+      "description": "Importance, novelty, and contributions of the research"
+    },
+    {
+      "class_name": "Hydrological-Context",
+      "description": "Physical and environmental setting of the research"
+    },
+    {
+      "class_name": "Hydrological-Process",
+      "description": "Water cycle and related processes being studied"
+    },
+    {
+      "class_name": "Research-Methodology",
+      "description": "Methods, techniques, and approaches used"
+    },
+    {
+      "class_name": "Data-and-Measurement",
+      "description": "Data sources, collection methods, and instrumentation"
+    },
+    {
+      "class_name": "Spatial-Temporal-Scale",
+      "description": "Geographic and time dimensions of the study"
+    },
+    {
+      "class_name": "Environmental-Factors",
+      "description": "External influences on hydrological systems"
+    },
+    {
+      "class_name": "Model-and-Theory",
+      "description": "Theoretical frameworks and modeling approaches"
+    },
+    {
+      "class_name": "Experimental-Design",
+      "description": "Study design, setup, and experimental protocols"
+    },
+    {
+      "class_name": "Results-Findings",
+      "description": "Research outcomes, observations, and discoveries"
+    },
+    {
+      "class_name": "Data-Analysis",
+      "description": "Statistical analysis, data processing, and interpretation methods"
+    },
+    {
+      "class_name": "Discussion-Interpretation",
+      "description": "Analysis of results, implications, and theoretical discussions"
+    },
+    {
+      "class_name": "Validation-Verification",
+      "description": "Model validation, result verification, and accuracy assessment"
+    },
+    {
+      "class_name": "Limitations-Constraints",
+      "description": "Study limitations, assumptions, and constraints"
+    },
+    {
+      "class_name": "Comparison-Benchmarking",
+      "description": "Comparative analysis with other studies or methods"
+    },
+    {
+      "class_name": "Implications-Applications",
+      "description": "Practical applications and real-world implications"
+    },
+    {
+      "class_name": "Future-Work",
+      "description": "Recommendations for future research directions"
+    },
+    {
+      "class_name": "Conclusions",
+      "description": "Key takeaways, summary of findings, and final statements"
+    },
+    {
+      "class_name": "Related-Research",
+      "description": "Connected studies, follow-up work, and research lineage"
+    },
+    {
+      "class_name": "Technical-Implementation",
+      "description": "Technical details, algorithms, and implementation specifics"
+    },
+    {
+      "class_name": "Quality-Assessment",
+      "description": "Quality control, uncertainty analysis, and reliability measures"
+    },
+    {
+      "class_name": "Stakeholder-Impact",
+      "description": "Impact on communities, policy, and decision-making"
+    },
+    {
+      "class_name": "Innovation-Novelty",
+      "description": "Novel approaches, innovations, and breakthroughs"
+    },
+    {
+      "class_name": "Collaboration-Network",
+      "description": "Research collaborations, institutional networks, and partnerships"
+    },
+    {
+      "class_name": "Resource-Requirements",
+      "description": "Computational, financial, and human resources needed"
+    },
+    {
+      "class_name": "Ethical-Considerations",
+      "description": "Ethical aspects, environmental impact, and sustainability"
+    }],
+    "v2": [
+    {
+      "class_name": "Metadata",
+      "description": "Paper metadata including bibliographic information"
+    },
+    {
+      "class_name": "Research-Background",
+      "description": "Contextual information and foundational knowledge"
+    },
+    {
+      "class_name": "Literature-Review",
+      "description": "Related work and existing research analysis"
+    },
+    {
+      "class_name": "Problem-Statement",
+      "description": "Research problems, gaps, and challenges identified"
+    },
+    {
+      "class_name": "Research-Objective",
+      "description": "Goals, aims, hypotheses, and research questions"
+    },
+    {
+      "class_name": "Hydrological-Context",
+      "description": "Physical and environmental setting of the research"
+    },
+    {
+      "class_name": "Hydrological-Process",
+      "description": "Water cycle and related processes being studied"
+    },
+    {
+      "class_name": "Research-Methodology",
+      "description": "Methods, techniques, and approaches used"
+    },
+    {
+      "class_name": "Data-and-Measurement",
+      "description": "Data sources, collection methods, and instrumentation"
+    },
+    {
+      "class_name": "Spatial-Temporal-Scale",
+      "description": "Geographic and time dimensions of the study"
+    },
+    {
+      "class_name": "Model-and-Theory",
+      "description": "Theoretical frameworks and modeling approaches"
+    },
+    {
+      "class_name": "Results-Findings",
+      "description": "Research outcomes, observations, and discoveries"
+    },
+    {
+      "class_name": "Data-Analysis",
+      "description": "Statistical analysis, data processing, and interpretation methods"
+    },
+    {
+      "class_name": "Discussion-Interpretation",
+      "description": "Analysis of results, implications, and theoretical discussions"
+    },
+    {
+      "class_name": "Validation-Performance",
+      "description": "Model validation, result verification, and performance assessment"
+    },
+    {
+      "class_name": "Limitations-Uncertainty",
+      "description": "Study limitations, assumptions, and uncertainty analysis"
+    },
+    {
+      "class_name": "Applications-Implications",
+      "description": "Practical applications and real-world implications"
+    },
+    {
+      "class_name": "Future-Work",
+      "description": "Recommendations for future research directions"
+    },
+    {
+      "class_name": "Conclusions",
+      "description": "Key takeaways, summary of findings, and final statements"
+    },
+    {
+      "class_name": "Innovation-Contribution",
+      "description": "Novel approaches, innovations, and research contributions"
+    }],
+  "v3":[
+    "Metadata",
+    "Research-Background", 
+    "Literature-Review",
+    "Problem-Statement",
+    "Research-Objective",
+    "Study-Area",
+    "Hydrological-Process",
+    "Research-Methodology",
+    "Data-Sources",
+    "Spatial-Temporal-Scale",
+    "Models-Methods",
+    "Results-Findings",
+    "Analysis-Techniques",
+    "Discussion-Interpretation",
+    "Validation-Assessment",
+    "Uncertainty-Limitations",
+    "Applications-Management",
+    "Future-Research",
+    "Conclusions",
+    "Innovation-Novelty"
+  ]
+}

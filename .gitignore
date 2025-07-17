@@ -4,7 +4,7 @@ papers/
 markdowns/
 ontology_outputs/
 ontology_outputs_json/
-
+text_outputs/
 
 #.env
 .env
