@@ -82,7 +82,6 @@ class Neo4j:
                 "id": node.extraction_id,
                 "content": node.extracted_content,
                 "evidence": node.supporting_evidence,
-                "confidence_score": node.confidence_score,
                 "keywords": node.keywords,
             }
             tx.run(
@@ -109,7 +108,6 @@ class Neo4j:
                 "id": relationship_id,
                 "type": label,
                 "description": relationship.relationship_description,
-                "confidence_score": relationship.confidence_score,
                 "evidence": relationship.supporting_evidence,
             }
 

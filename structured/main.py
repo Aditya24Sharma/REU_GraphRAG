@@ -63,17 +63,17 @@ if __name__ == "__main__":
 
     # STORING DATA
     input_json_folder = project_root / "data" / "ontology_outputs_json" / "v3"
-    input_markdown_folder = project_root / "data" / "text_outputs"
-    file_path = ""
+    # input_markdown_folder = project_root / "data" / "text_outputs"
+    # file_path = ""
     for file in os.listdir(input_json_folder):
         file_path = os.path.join(input_json_folder, file)
         neo4j.create_knowledge_graph(file_path=file_path)
-        chromadb.store_json_to_db(input_file=file_path, collection_name="Graph")
-    #
-    for file in os.listdir(input_markdown_folder):
-        # print(file)
-        file_path = os.path.join(input_markdown_folder, file)
-        chromadb.store_text_to_db(input_file=file_path, collection_name="Vector")
+        # chromadb.store_json_to_db(input_file=file_path, collection_name="Graph")
+    # #
+    # for file in os.listdir(input_markdown_folder):
+    #     # print(file)
+    #     file_path = os.path.join(input_markdown_folder, file)
+    #     chromadb.store_text_to_db(input_file=file_path, collection_name="Vector")
 
     # file = os.listdir(input_json_folder)[1]
     # file_path = os.path.join(input_json_folder, file)

@@ -57,6 +57,7 @@ class LLM:
         """
         try:
             logger.info("LLM generating revised query")
+            print("LLM generating revised query")
 
             prompt_path = os.path.join(self.cwd, "prompts", "revise_query.txt")
             with open(prompt_path, "r", encoding="utf-8") as f:
